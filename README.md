@@ -4,4 +4,4 @@ This personal project is designed to be a companion website to the game [Phasmop
 
 ## Work In Progress
 
-**Once a minimal viable product has been achived this will be updated with directions for using the site
+**Once a minimal viable product has been achived this will be updated with directions for using the site!**
