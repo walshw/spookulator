@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { ghosts } from './constants/constants'
+
+const renderGhosts = () => {
+  return ghosts.map(ghost => {
+    return <div>
+      <div><b>{ghost.name}</b></div>
+      <div>{ghost.evidence[0]}</div>
+      <div>{ghost.evidence[1]}</div>
+      <div>{ghost.evidence[2]}</div>
+      <hr/>
+    </div>
+  })
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Spookulator
-        </a>
-      </header>
+    <div>
+      {renderGhosts()}
     </div>
   );
 }
