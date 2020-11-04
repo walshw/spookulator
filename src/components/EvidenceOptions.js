@@ -19,6 +19,7 @@ const EvidenceOptions = (props) => {
 
     return (
         <div>
+            <h2>Click the Evidence Names Below to Begin</h2>
             {renderEvidence()}
         </div>
     )
