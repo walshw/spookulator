@@ -1,4 +1,4 @@
-const evidence = {
+const evidenceDictionary = {
     emfLevelFive: 'EMF Level 5',
     ghostWriting: 'Ghost Writing',
     fingerPrints: 'Fingerprints',
@@ -7,7 +7,7 @@ const evidence = {
     ghostOrb: 'Ghost Orb'
 };
 
-const ghosts = [
+const ghostList = [
     {
         name: 'Banshee',
         evidence: ['EMF Level 5', 'Fingerprints', 'Freezing Temperatures']
@@ -58,4 +58,4 @@ const ghosts = [
     }
 ];
 
-export { ghosts, evidence }
+export { ghostList, evidenceDictionary }
