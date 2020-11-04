@@ -2,29 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const ListContainer = (props) => {
-    console.log("rerendered")
-    let renderEvidence = () => {
-        const { toggleEvidence, evidence } = props;
-
-        return <div className="evidenceOptionsContainer">
-            {Object.keys(evidence).map(e =>
+    let renderContents = () => {
+        return <div className="listContainer">
+            {props.contentList.map(content =>
                 <div
-                    className={evidence[e].isSelected ? "glow" : ""}
-                    key={e}
-                    onClick={() => toggleEvidence(e)}>
-                    {evidence[e].name}
+                    key={content.name}>
+                    {content.name}
                 </div>)}
         </div>
     }
 
     return (
         <div>
-            {renderEvidence()}
+            <h2>{props.title}</h2>
+            {renderContents()}
         </div>
     )
 }
 
 ListContainer.propTypes = {
+    title: PropTypes.string.isRequired,
+    contentList: PropTypes.array.isRequired
 }
 
 export default ListContainer;

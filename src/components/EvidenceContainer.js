@@ -1,23 +1,24 @@
 import React, { Component } from 'react';
 import { evidenceDictionary, ghostList } from '../constants/constants'
 import EvidenceOptions from './EvidenceOptions';
+import ListContainer from './ListContainer';
 
 class EvidenceContainer extends Component {
     constructor(props) {
         super(props);
-        console.log("EVIDENCE CONTAINER RE-RENDERED");
-        // ^ THIS WONT GET CALLED IF YOU CLICK ON AN EVIDENCE IN A CHILD COMPONENT
-        // NICEEEEEEEE
 
         let evidenceObject = {}
 
         Object.keys(evidenceDictionary).forEach(e => evidenceObject[e] = {
             name: evidenceDictionary[e],
-            isSelected: false
+            isSelected: false,
+            isEnabled: true
         });
 
         this.state = {
-            evidence: evidenceObject
+            evidence: evidenceObject,
+            possibleGhosts: ghostList,
+            impossibleGhosts: []
         }
     }
 
@@ -40,15 +41,67 @@ class EvidenceContainer extends Component {
 
         updatedEvidence[evidenceKey].isSelected = !updatedEvidence[evidenceKey].isSelected;
 
+        // logic to evalute evidence states should be done at the end of a toggle
+        // i.e Enabling previously disabled evidence, disabling impossible evidence
+
+        this.evaluateEvidenceStates(updatedEvidence);
+
+        // set state is async, probs do this AFTER evaluation of states
         this.setState({ selectedEvidence: updatedEvidence });
+
+        // have a clear button?
+    }
+
+    evaluateEvidenceStates = (evidence) => {
+        // get all selected evidence
+
+        const evidenceNames = Object.keys(evidence).filter((eKey) => evidence[eKey].isSelected);
+
+        // loop through the ghost list and collect all the names of ghosts that contain
+        // the selected evidence
+
+        // maybe add all the ghosts that dont match the evidence
+        // need to find the set difference ?
+        // FOCUS ON ALL THE POSSIBLE GHOSTS AND POSSIBLE REMAINING EVIDENCE FIRST
+
+        // this below has nothing to do with validating evidence states
+        const possibleGhosts = [];
+        const impossibleGhosts = [];
+
+        ghostList.forEach(ghost => {
+            if (evidenceNames
+                .every(evidenceName => ghost.evidence
+                    .includes(evidenceDictionary[evidenceName]))) {
+                possibleGhosts.push(ghost);
+            } else {
+                impossibleGhosts.push(ghost);
+            }
+        });
+
+        // IN HERE I NEED TO ADD THE ACTUAL POSSIBLE EVIDENCE AND IMPOSSIBLE EVIDENCE
+
+        this.setState({
+            possibleGhosts: possibleGhosts,
+            impossibleGhosts: impossibleGhosts
+        });
     }
 
     render() {
         return (
             <div>
                 <EvidenceOptions
-                    toggleEvidence={this.toggleEvidence} 
-                    evidence={this.state.evidence}/>
+                    toggleEvidence={this.toggleEvidence}
+                    evidence={this.state.evidence} />
+                <hr />
+                <ListContainer
+                    title="Possible Ghosts"
+                    contentList={this.state.possibleGhosts}
+                />
+                <hr />
+                <ListContainer
+                    title="Impossible Ghosts"
+                    contentList={this.state.impossibleGhosts}
+                />
             </div>
         )
     }
