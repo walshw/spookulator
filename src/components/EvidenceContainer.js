@@ -18,7 +18,8 @@ class EvidenceContainer extends Component {
         this.state = {
             evidence: evidenceObject,
             possibleGhosts: ghostList,
-            impossibleGhosts: []
+            impossibleGhosts: [],
+            possibleRemainingEvidence: []
         }
     }
 
@@ -52,10 +53,14 @@ class EvidenceContainer extends Component {
         // have a clear button?
     }
 
-    evaluateEvidenceStates = (evidence) => {
-        // get all selected evidence
+    evaluateEvidenceStates = (currentEvidence) => {
+        // I am having an issue with names
+        // we have evidence in the state which is an object with ALL evidence and is used for tracking what is clicked and what isnt
+        // THEN we have to get the evidence objects that are selected
 
-        const evidenceNames = Object.keys(evidence).filter((eKey) => evidence[eKey].isSelected);
+        const selectedEvidence = Object.keys(currentEvidence)
+            .filter((eKey) => currentEvidence[eKey].isSelected)
+            .map(eKey => currentEvidence[eKey].name);
 
         // loop through the ghost list and collect all the names of ghosts that contain
         // the selected evidence
@@ -68,21 +73,37 @@ class EvidenceContainer extends Component {
         const possibleGhosts = [];
         const impossibleGhosts = [];
 
+        const possibleRemainingEvidenceSet = new Set();
+
         ghostList.forEach(ghost => {
-            if (evidenceNames
-                .every(evidenceName => ghost.evidence
-                    .includes(evidenceDictionary[evidenceName]))) {
+            if (selectedEvidence
+                .every(evidence => ghost.evidence
+                    .includes(evidence))) {
                 possibleGhosts.push(ghost);
+
+                const difference = ghost.evidence.filter(e => !selectedEvidence.includes(e));
+
+                difference.forEach(e => possibleRemainingEvidenceSet.add(e));
+
             } else {
                 impossibleGhosts.push(ghost);
             }
         });
 
-        // IN HERE I NEED TO ADD THE ACTUAL POSSIBLE EVIDENCE AND IMPOSSIBLE EVIDENCE
+        // do similar logic but now we check for evidence that is NOT in the possible evidence?
+        // maybe instead of adding it each time in the ELSE up above I can just find the set difference between all the
+        // possible evidence and all evidence
+
+        let possibleRemainingEvidence = [];
+
+        possibleRemainingEvidenceSet.forEach(evidenceName => possibleRemainingEvidence.push({ name: evidenceName }));
+
+        console.log(possibleRemainingEvidence)
 
         this.setState({
             possibleGhosts: possibleGhosts,
-            impossibleGhosts: impossibleGhosts
+            impossibleGhosts: impossibleGhosts,
+            possibleRemainingEvidence: possibleRemainingEvidence
         });
     }
 
@@ -92,6 +113,11 @@ class EvidenceContainer extends Component {
                 <EvidenceOptions
                     toggleEvidence={this.toggleEvidence}
                     evidence={this.state.evidence} />
+                <hr />
+                <ListContainer
+                    title="Possible Remaining Evidence"
+                    contentList={this.state.possibleRemainingEvidence}
+                />
                 <hr />
                 <ListContainer
                     title="Possible Ghosts"
