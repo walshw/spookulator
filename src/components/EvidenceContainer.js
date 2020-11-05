@@ -23,8 +23,7 @@ class EvidenceContainer extends Component {
             evidence: evidenceObject,
             possibleGhosts: ghostList,
             impossibleGhosts: [],
-            possibleRemainingEvidence: [],
-            impossibleRemainingEvidence: []
+            possibleRemainingEvidence: []
         }
     }
 
@@ -90,7 +89,6 @@ class EvidenceContainer extends Component {
             possibleGhosts: possibleGhosts,
             impossibleGhosts: impossibleGhosts,
             possibleRemainingEvidence: possibleRemainingEvidenceNames.map(e => ({name: e})),
-            impossibleRemainingEvidence: impossibleRemainingEvidenceNames.map(e => ({name: e})),
             selectedEvidence: currentEvidence
         });
     }
@@ -104,7 +102,7 @@ class EvidenceContainer extends Component {
                     reset={this.resetState}/>
                 <hr />
                 <ListContainer
-                    title="Possible Remaining Evidence"
+                    title="Possible Remaining Evidence (Maybe remove? Maybe have pictures of tools)"
                     contentList={this.state.possibleRemainingEvidence}
                 />
                 <hr />
@@ -116,11 +114,6 @@ class EvidenceContainer extends Component {
                 <ListContainer
                     title="Impossible Ghosts"
                     contentList={this.state.impossibleGhosts}
-                />
-                <hr />
-                <ListContainer
-                    title="Impossible Evidence"
-                    contentList={this.state.impossibleRemainingEvidence}
                 />
             </div>
         )
