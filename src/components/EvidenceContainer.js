@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { evidenceDictionary, ghostList } from '../constants/constants'
+import { evidenceDictionary, evidenceList, ghostList } from '../constants/constants'
 import EvidenceOptions from './EvidenceOptions';
+import GhostContainer from './GhostContainer';
 import ListContainer from './ListContainer';
 
 class EvidenceContainer extends Component {
@@ -11,19 +12,24 @@ class EvidenceContainer extends Component {
     }
 
     getInitialState = () => {
-        let evidenceObject = {}
+        let evidenceObject = {};
+        let possibleEvidence = [];
 
-        Object.keys(evidenceDictionary).forEach(e => evidenceObject[e] = {
-            name: evidenceDictionary[e],
-            isSelected: false,
-            isDisabled: false
+        Object.keys(evidenceDictionary).forEach(e => {
+            evidenceObject[e] = {
+                name: evidenceDictionary[e],
+                isSelected: false,
+                isDisabled: false
+            };
+
+            possibleEvidence.push({ name: evidenceDictionary[e] });
         });
 
         return {
             evidence: evidenceObject,
             possibleGhosts: ghostList,
             impossibleGhosts: [],
-            possibleRemainingEvidence: []
+            possibleRemainingEvidence: possibleEvidence
         }
     }
 
@@ -88,9 +94,23 @@ class EvidenceContainer extends Component {
         this.setState({
             possibleGhosts: possibleGhosts,
             impossibleGhosts: impossibleGhosts,
-            possibleRemainingEvidence: possibleRemainingEvidenceNames.map(e => ({name: e})),
+            possibleRemainingEvidence: possibleRemainingEvidenceNames.map(e => ({ name: e })),
             selectedEvidence: currentEvidence
         });
+    }
+
+    renderRemainingGhosts = () => {
+        const { possibleGhosts } = this.state;
+
+        const title = possibleGhosts.length > 1 ? "Possible Ghosts" : "Ghost Type";
+
+        return <div>
+            <GhostContainer
+                title={title}
+                ghosts={possibleGhosts}
+            />
+            <hr />
+        </div>
     }
 
     render() {
@@ -99,22 +119,21 @@ class EvidenceContainer extends Component {
                 <EvidenceOptions
                     toggleEvidence={this.toggleEvidence}
                     evidence={this.state.evidence}
-                    reset={this.resetState}/>
+                    reset={this.resetState} />
                 <hr />
                 <ListContainer
                     title="Possible Remaining Evidence (Maybe remove? Maybe have pictures of tools)"
                     contentList={this.state.possibleRemainingEvidence}
+                    emptyText="No remaining evidence"
                 />
                 <hr />
-                <ListContainer
-                    title="Possible Ghosts"
-                    contentList={this.state.possibleGhosts}
-                />
-                <hr />
-                <ListContainer
-                    title="Impossible Ghosts"
-                    contentList={this.state.impossibleGhosts}
-                />
+                {this.renderRemainingGhosts()}
+                    <GhostContainer
+                        title="Impossible Ghosts"
+                        ghosts={this.state.impossibleGhosts}
+                        emptyText="No Impossible Ghosts"
+                    />
+                    <hr />
             </div>
         )
     }

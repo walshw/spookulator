@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 
 const ListContainer = (props) => {
     let renderContents = () => {
-        return <div className="listContainer">
-            {props.contentList.map(content =>
-                <div
-                    key={content.name}>
-                    {content.name}
-                </div>)}
-        </div>
+
+        return props.contentList.length > 0
+            ?
+            <div className="listContainer">
+                {props.contentList.map(content =>
+                    <div
+                        key={content.name}>
+                        {content.name}
+                    </div>)}
+            </div>
+            :
+            <div>{props.emptyText}</div>
     }
 
     return (
@@ -22,7 +27,8 @@ const ListContainer = (props) => {
 
 ListContainer.propTypes = {
     title: PropTypes.string.isRequired,
-    contentList: PropTypes.array.isRequired
+    contentList: PropTypes.array.isRequired,
+    emptyText: PropTypes.string
 }
 
 export default ListContainer;
