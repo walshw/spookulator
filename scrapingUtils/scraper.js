@@ -28,7 +28,7 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
                     } else if (text === 'X') {
                         ghostEvidence.push(evidence[index - 1])
                     }
-                })
+                });
 
                 ghosts.push({
                     name: ghostName,
@@ -37,6 +37,35 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
             }
         });
 
-        console.log(ghosts);
-        console.log(evidence)
+        // I AM BENCHING THIS CODE BECAUSE OF WIKI INCONSISTENCIES
+        // THIS WORKS FOR IF THE STRENGTHS AND WEAKNESSES ARE IN A UL
+        // HOWEVER SOME ARE IN P TAGS
+
+        // ghosts.forEach(ghost => {
+        //     const url = "https://phasmophobia.fandom.com/wiki/";
+        //     axios.get(url + ghost.name).then((response) => {
+        //         const c = cheerio.load(response.data);
+        //         const temp = c('.mw-parser-output');
+
+        //         let strengthWeaknessIndex = null;
+
+        //         temp.each((index, x) => {
+        //             const text = c(x).text().trim();
+
+        //             if (index === strengthWeaknessIndex) {
+        //                 let bongo = c(x).children().toArray();
+                        
+        //                 ghost["strength"] = c(bongo[0]).text().split("Strengths:")[1].trim();
+        //                 ghost["weakness"] = c(bongo[1]).text().split("Weaknesses:")[1].trim();
+
+        //             } else if (text.includes("Strengths and Weaknesses[edit | edit source]")) {
+        //                 strengthWeaknessIndex = index + 1;
+        //             }
+        //         });
+
+        //     });
+        // });
+
+        // console.log(ghosts);
+        // console.log(evidence)
     });
