@@ -3,17 +3,19 @@ import PropTypes from 'prop-types';
 
 const EvidenceOptions = (props) => {
     console.log("rerendered")
-    let renderEvidence = () => {
+    
+    const renderEvidence = () => {
         const { toggleEvidence, evidence } = props;
 
         return <div className="evidenceOptionsContainer">
             {Object.keys(evidence).map(e =>
-                <div
+                <button
                     className={evidence[e].isSelected ? "glow" : ""}
                     key={e}
+                    disabled={evidence[e].isDisabled}
                     onClick={() => toggleEvidence(e)}>
                     {evidence[e].name}
-                </div>)}
+                </button>)}
         </div>
     }
 

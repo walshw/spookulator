@@ -12,7 +12,7 @@ class EvidenceContainer extends Component {
         Object.keys(evidenceDictionary).forEach(e => evidenceObject[e] = {
             name: evidenceDictionary[e],
             isSelected: false,
-            isEnabled: true
+            isDisabled: false
         });
 
         this.state = {
@@ -97,8 +97,6 @@ class EvidenceContainer extends Component {
         let possibleRemainingEvidence = [];
 
         possibleRemainingEvidenceSet.forEach(evidenceName => possibleRemainingEvidence.push({ name: evidenceName }));
-
-        console.log(possibleRemainingEvidence)
 
         this.setState({
             possibleGhosts: possibleGhosts,
