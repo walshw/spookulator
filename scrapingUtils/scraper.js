@@ -32,7 +32,8 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
 
                 ghosts.push({
                     name: ghostName,
-                    evidence: ghostEvidence
+                    evidence: ghostEvidence,
+                    link: ("https://phasmophobia.fandom.com/wiki/" + ghostName)
                 });
             }
         });
@@ -66,6 +67,6 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
         //     });
         // });
 
-        // console.log(ghosts);
+        console.log(ghosts);
         // console.log(evidence)
     });
