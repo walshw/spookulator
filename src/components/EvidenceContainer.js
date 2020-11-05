@@ -7,6 +7,10 @@ class EvidenceContainer extends Component {
     constructor(props) {
         super(props);
 
+        this.state = this.getInitialState();
+    }
+
+    getInitialState = () => {
         let evidenceObject = {}
 
         Object.keys(evidenceDictionary).forEach(e => evidenceObject[e] = {
@@ -15,7 +19,7 @@ class EvidenceContainer extends Component {
             isDisabled: false
         });
 
-        this.state = {
+        return {
             evidence: evidenceObject,
             possibleGhosts: ghostList,
             impossibleGhosts: [],
@@ -37,15 +41,15 @@ class EvidenceContainer extends Component {
     }
 
     toggleEvidence = (evidenceKey) => {
-        // condense this method
-
         let updatedEvidence = this.state.evidence;
 
         updatedEvidence[evidenceKey].isSelected = !updatedEvidence[evidenceKey].isSelected;
 
         this.calculateEvidenceStates(updatedEvidence);
+    }
 
-        // have a clear button?
+    resetState = () => {
+        this.setState(this.getInitialState());
     }
 
     calculateEvidenceStates = (currentEvidence) => {
@@ -96,7 +100,8 @@ class EvidenceContainer extends Component {
             <div>
                 <EvidenceOptions
                     toggleEvidence={this.toggleEvidence}
-                    evidence={this.state.evidence} />
+                    evidence={this.state.evidence}
+                    reset={this.resetState}/>
                 <hr />
                 <ListContainer
                     title="Possible Remaining Evidence"

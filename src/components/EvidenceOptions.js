@@ -23,13 +23,15 @@ const EvidenceOptions = (props) => {
         <div>
             <h2>Click the Evidence Names Below to Begin</h2>
             {renderEvidence()}
+            <button onClick={props.reset}>Clear</button>
         </div>
     )
 }
 
 EvidenceOptions.propTypes = {
     toggleEvidence: PropTypes.func.isRequired,
-    evidence: PropTypes.object.isRequired,
+    reset: PropTypes.func.isRequired,
+    evidence: PropTypes.object.isRequired
 }
 
 export default EvidenceOptions;
