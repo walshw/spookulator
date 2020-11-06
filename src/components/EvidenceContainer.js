@@ -128,12 +128,6 @@ class EvidenceContainer extends Component {
                     emptyText="No remaining evidence"
                 />
                 <hr />
-                <GhostContainer
-                    title="Impossible Ghosts"
-                    ghosts={this.state.impossibleGhosts}
-                    emptyText="No Impossible Ghosts"
-                />
-                <hr />
             </div>
         )
     }
