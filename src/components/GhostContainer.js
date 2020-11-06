@@ -7,12 +7,11 @@ const GhostContainer = (props) => {
             ?
             <div className="listContainer">
                 {props.ghosts.map(ghost =>
-
                     <div
                         key={ghost.name}>
-                        <a href={ghost.link}>
-                            <div>{ghost.name}</div>
-                        </a>
+                        <div>
+                            <a href={ghost.link}>{ghost.name}</a>
+                        </div>
                         <ul>
                             <li><b>Strength: </b>{ghost.strength}</li>
                             <li><b>Weakness: </b>{ghost.weakness}</li>

@@ -121,13 +121,13 @@ class EvidenceContainer extends Component {
                     evidence={this.state.evidence}
                     reset={this.resetState} />
                 <hr />
-                {this.renderRemainingGhosts()}
                 <ListContainer
                     title="Possible Remaining Evidence (Maybe remove? Maybe have pictures of tools)"
                     contentList={this.state.possibleRemainingEvidence}
                     emptyText="No remaining evidence"
                 />
                 <hr />
+                {this.renderRemainingGhosts()}
             </div>
         )
     }
