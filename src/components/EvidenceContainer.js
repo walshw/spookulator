@@ -115,25 +115,25 @@ class EvidenceContainer extends Component {
 
     render() {
         return (
-            <div>
+            <div className="evidenceContainer">
                 <EvidenceOptions
                     toggleEvidence={this.toggleEvidence}
                     evidence={this.state.evidence}
                     reset={this.resetState} />
                 <hr />
+                {this.renderRemainingGhosts()}
                 <ListContainer
                     title="Possible Remaining Evidence (Maybe remove? Maybe have pictures of tools)"
                     contentList={this.state.possibleRemainingEvidence}
                     emptyText="No remaining evidence"
                 />
                 <hr />
-                {this.renderRemainingGhosts()}
-                    <GhostContainer
-                        title="Impossible Ghosts"
-                        ghosts={this.state.impossibleGhosts}
-                        emptyText="No Impossible Ghosts"
-                    />
-                    <hr />
+                <GhostContainer
+                    title="Impossible Ghosts"
+                    ghosts={this.state.impossibleGhosts}
+                    emptyText="No Impossible Ghosts"
+                />
+                <hr />
             </div>
         )
     }

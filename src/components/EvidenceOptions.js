@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const EvidenceOptions = (props) => {
-    console.log("rerendered")
-    
     const renderEvidence = () => {
         const { toggleEvidence, evidence } = props;
 

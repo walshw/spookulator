@@ -33,40 +33,27 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
                 ghosts.push({
                     name: ghostName,
                     evidence: ghostEvidence,
-                    link: ("https://phasmophobia.fandom.com/wiki/" + ghostName)
+                    link: ("https://phasmophobia.fandom.com/wiki/" + ghostName),
+                    strength: "",
+                    weakness: ""
                 });
             }
         });
 
-        // I AM BENCHING THIS CODE BECAUSE OF WIKI INCONSISTENCIES
-        // THIS WORKS FOR IF THE STRENGTHS AND WEAKNESSES ARE IN A UL
-        // HOWEVER SOME ARE IN P TAGS
+        const requests = ghosts.map(ghost => axios.get('https://phasmophobia.fandom.com/wiki/' + ghost.name))
 
-        // ghosts.forEach(ghost => {
-        //     const url = "https://phasmophobia.fandom.com/wiki/";
-        //     axios.get(url + ghost.name).then((response) => {
-        //         const c = cheerio.load(response.data);
-        //         const temp = c('.mw-parser-output');
+        axios.all(requests).then(axios.spread((...responses) => {
+            responses.forEach((response, index) => {
+                const c = cheerio.load(response.data);
+                const siteText = c('.mw-parser-output').text();
 
-        //         let strengthWeaknessIndex = null;
+                ghosts[index]['strength'] = new RegExp('.*Strengths: (.*\n){1}').exec(siteText)[1].trim();
+                ghosts[index]['weakness'] = new RegExp('.*Weaknesses: (.*\n){1}').exec(siteText)[1].trim();
+            });
 
-        //         temp.each((index, x) => {
-        //             const text = c(x).text().trim();
+            console.log(ghosts);
+        }));
 
-        //             if (index === strengthWeaknessIndex) {
-        //                 let bongo = c(x).children().toArray();
-                        
-        //                 ghost["strength"] = c(bongo[0]).text().split("Strengths:")[1].trim();
-        //                 ghost["weakness"] = c(bongo[1]).text().split("Weaknesses:")[1].trim();
-
-        //             } else if (text.includes("Strengths and Weaknesses[edit | edit source]")) {
-        //                 strengthWeaknessIndex = index + 1;
-        //             }
-        //         });
-
-        //     });
-        // });
-
-        console.log(ghosts);
+        // console.log(ghosts);
         // console.log(evidence)
     });
