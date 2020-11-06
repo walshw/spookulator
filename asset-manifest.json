@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/spookulator/static/css/main.8e0f78f9.chunk.css",
-    "main.js": "/spookulator/static/js/main.1fbca574.chunk.js",
-    "main.js.map": "/spookulator/static/js/main.1fbca574.chunk.js.map",
+    "main.js": "/spookulator/static/js/main.4604e1bc.chunk.js",
+    "main.js.map": "/spookulator/static/js/main.4604e1bc.chunk.js.map",
     "runtime-main.js": "/spookulator/static/js/runtime-main.c44c11fb.js",
     "runtime-main.js.map": "/spookulator/static/js/runtime-main.c44c11fb.js.map",
     "static/js/2.00f6dd78.chunk.js": "/spookulator/static/js/2.00f6dd78.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c44c11fb.js",
     "static/js/2.00f6dd78.chunk.js",
     "static/css/main.8e0f78f9.chunk.css",
-    "static/js/main.1fbca574.chunk.js"
+    "static/js/main.4604e1bc.chunk.js"
   ]
 }
