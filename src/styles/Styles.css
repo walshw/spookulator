@@ -1,3 +1,18 @@
 .glow {
     color: darkgoldenrod;
 }
+
+body {
+    background-color: #54524a;
+    color: #1c1c1b;
+}
+
+hr {
+    background-color: #1c1c1b;
+    height: 1px;
+    border: none;
+}
+
+button {
+    background-color: #54524a;
+}

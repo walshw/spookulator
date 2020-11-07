@@ -19,7 +19,7 @@ const EvidenceOptions = (props) => {
 
     return (
         <div>
-            <h2>Click the Evidence Names Below to Begin</h2>
+            <h2>Click the Evidence Names Below to Begin (This color is my bootleg darkmode)</h2>
             {renderEvidence()}
             <button onClick={props.reset}>Clear</button>
         </div>

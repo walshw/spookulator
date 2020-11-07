@@ -7,11 +7,13 @@ const ListContainer = (props) => {
         return props.contentList.length > 0
             ?
             <div className="listContainer">
+                <ul>
                 {props.contentList.map(content =>
                     <div
                         key={content.name}>
-                        {content.name}
+                        <li>{content.name}</li>
                     </div>)}
+                </ul>
             </div>
             :
             <div>{props.emptyText}</div>
