@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 import { evidenceDictionary, evidenceList, ghostList } from '../constants/constants'
+import { AppBar, Typography } from '@material-ui/core';
 import EvidenceOptions from './EvidenceOptions';
 import GhostContainer from './GhostContainer';
 import ListContainer from './ListContainer';
 
-class EvidenceContainer extends Component {
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = theme => ({
+    toolbar: theme.mixins.toolbar
+})
+
+class MainContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.state = this.getInitialState();
+        this.state = {
+            drawerOpen: false,
+            ...this.getInitialState()
+        };
     }
+
+
 
     getInitialState = () => {
         let evidenceObject = {};
@@ -114,12 +126,28 @@ class EvidenceContainer extends Component {
     }
 
     render() {
+        const { drawerOpen } = this.state;
+
+        const { classes } = this.props;
+
         return (
             <div className="evidenceContainer">
+                <AppBar
+                    className={classes.toolbar}
+                    position="fixed"
+                >
+                    <Typography variant="h4">
+                        Spookulator
+                        </Typography>
+                </AppBar>
+
                 <EvidenceOptions
                     toggleEvidence={this.toggleEvidence}
                     evidence={this.state.evidence}
-                    reset={this.resetState} />
+                    reset={this.resetState}
+                    isOpen={drawerOpen}
+                    toggleOpen={() => this.setState({ drawerOpen: !drawerOpen })}
+                />
                 <hr />
                 <ListContainer
                     title="Possible Remaining Evidence (Maybe remove? Maybe have pictures of tools)"
@@ -153,4 +181,4 @@ class EvidenceContainer extends Component {
 // ^ for these sections see if you can have a hide/show button??
 // maybe animations for shrinking and growing when they get bigger
 
-export default EvidenceContainer;
+export default withStyles(styles)(MainContainer);

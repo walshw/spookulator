@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Chip, IconButton } from '@material-ui/core';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const EvidenceOptions = (props) => {
     const renderEvidence = () => {
@@ -7,21 +9,22 @@ const EvidenceOptions = (props) => {
 
         return <div className="evidenceOptionsContainer">
             {Object.keys(evidence).map(e =>
-                <button
-                    className={evidence[e].isSelected ? "glow" : ""}
+                <Chip
+                    color={evidence[e].isSelected ? "primary" : ""}
                     key={e}
                     disabled={evidence[e].isDisabled}
-                    onClick={() => toggleEvidence(e)}>
-                    {evidence[e].name}
-                </button>)}
+                    onClick={() => toggleEvidence(e)}
+                    label={evidence[e].name}>
+                </Chip>)}
+            <IconButton edge="start" onClick={props.reset}>
+                <HighlightOffIcon />
+            </IconButton>
         </div>
     }
 
     return (
         <div>
-            <h2>Click the Evidence Names Below to Begin (This color is my bootleg darkmode)</h2>
             {renderEvidence()}
-            <button onClick={props.reset}>Clear</button>
         </div>
     )
 }
