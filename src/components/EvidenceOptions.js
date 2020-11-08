@@ -28,8 +28,8 @@ const EvidenceOptions = (props) => {
     }
 
     return (
-        <Grid container md={6}>
-            {renderEvidence()}
+        <Grid container lg={6}>
+                {renderEvidence()}
         </Grid>
     )
 }

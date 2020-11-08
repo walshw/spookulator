@@ -25,14 +25,15 @@ const theme = createMuiTheme({
 
   // https://material-ui.com/system/palette/
 
+  // https://material-ui.com/styles/advanced/
+  // ^ Info on overriding theme with makeStyles
+
   //https://stackoverflow.com/questions/57966496/how-to-use-theme-in-styles-for-custom-class-components
 
   // https://material-ui.com/customization/default-theme/
   // ^ link to all variables in default theme
 
-  // Example code ripped from: https://material-ui.com/customization/color/
-  // This is the base theme for createMuiTheme()
-
+  // This is part of the base theme for createMuiTheme()
   // palette: {
   //   primary: {
   //     light: '#757ce8',
