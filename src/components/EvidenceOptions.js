@@ -1,31 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Chip, IconButton } from '@material-ui/core';
+import { Chip, IconButton, Grid } from '@material-ui/core';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const EvidenceOptions = (props) => {
     const renderEvidence = () => {
         const { toggleEvidence, evidence } = props;
 
-        return <div className="evidenceOptionsContainer">
+        return <Grid container spacing={2} display="flex" alignItems="center">
             {Object.keys(evidence).map(e =>
-                <Chip
-                    color={evidence[e].isSelected ? "primary" : ""}
-                    key={e}
-                    disabled={evidence[e].isDisabled}
-                    onClick={() => toggleEvidence(e)}
-                    label={evidence[e].name}>
-                </Chip>)}
-            <IconButton edge="start" onClick={props.reset}>
-                <HighlightOffIcon />
-            </IconButton>
-        </div>
+                <Grid item xs md align="center">
+                    <Chip
+                        color={evidence[e].isSelected ? "primary" : "default"}
+                        key={e}
+                        disabled={evidence[e].isDisabled}
+                        onClick={() => toggleEvidence(e)}
+                        label={evidence[e].name}>
+                    </Chip>
+                </Grid>
+            )}
+            <Grid item xs={12} md align="center">
+                <IconButton edge="start" onClick={props.reset}>
+                    <HighlightOffIcon />
+                </IconButton>
+            </Grid>
+        </Grid>
     }
 
     return (
-        <div>
+        <Grid container md={6}>
             {renderEvidence()}
-        </div>
+        </Grid>
     )
 }
 

@@ -8,11 +8,22 @@ const theme = createMuiTheme({
       },
       secondary: {
         main: deepPurple[500]
+      },
+      text: {
+          default: "#FFFF00",
+          primary: "#FFFFFF"
+      },
+      background: {
+          default: "#666667"
       }
     }
   })
 
   export default theme;
+
+  // https://www.schemecolor.com/blue-orange-and-gray.php
+
+  // https://material-ui.com/system/palette/
 
   //https://stackoverflow.com/questions/57966496/how-to-use-theme-in-styles-for-custom-class-components
 

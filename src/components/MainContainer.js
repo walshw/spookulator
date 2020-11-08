@@ -8,7 +8,8 @@ import ListContainer from './ListContainer';
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
-    toolbar: theme.mixins.toolbar
+    offset: theme.mixins.toolbar,
+    test: "#ffff"
 })
 
 class MainContainer extends Component {
@@ -20,8 +21,6 @@ class MainContainer extends Component {
             ...this.getInitialState()
         };
     }
-
-
 
     getInitialState = () => {
         let evidenceObject = {};
@@ -133,14 +132,13 @@ class MainContainer extends Component {
         return (
             <div className="evidenceContainer">
                 <AppBar
-                    className={classes.toolbar}
                     position="fixed"
                 >
                     <Typography variant="h4">
                         Spookulator
                         </Typography>
                 </AppBar>
-
+                <div className={classes.offset}/>
                 <EvidenceOptions
                     toggleEvidence={this.toggleEvidence}
                     evidence={this.state.evidence}
@@ -160,25 +158,5 @@ class MainContainer extends Component {
         )
     }
 }
-
-// im thinking of having a box of all the evidences
-// they will be clickable labels that glow when selected
-
-// choices will have the unselectable evidence be grayed out
-// on selection a box listing all impossible evidence will pop up? (see if this is redundant)
-
-
-// Selection area (EvidenceOptions)
-
-// Possible remaining evidence
-// Impossible evidence
-// Possible ghosts
-// Impossible ghosts
-
-//^ Maybe all of these can be in one component (ListContainer.js?)
-// and just have render methods for each section
-
-// ^ for these sections see if you can have a hide/show button??
-// maybe animations for shrinking and growing when they get bigger
 
 export default withStyles(styles)(MainContainer);

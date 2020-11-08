@@ -7,8 +7,8 @@ function App() {
 
 	return (
 		<div>
-			<CssBaseline />
 			<ThemeProvider theme={theme}>
+				<CssBaseline />
 				<MainContainer />
 			</ThemeProvider>
 		</div>
