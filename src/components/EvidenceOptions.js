@@ -1,28 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Chip, IconButton, Grid } from '@material-ui/core';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const EvidenceOptions = (props) => {
     const renderEvidence = () => {
         const { toggleEvidence, evidence } = props;
 
-        return <div className="evidenceOptionsContainer">
+        return <Grid container spacing={2} display="flex" alignItems="center">
             {Object.keys(evidence).map(e =>
-                <button
-                    className={evidence[e].isSelected ? "glow" : ""}
-                    key={e}
-                    disabled={evidence[e].isDisabled}
-                    onClick={() => toggleEvidence(e)}>
-                    {evidence[e].name}
-                </button>)}
-        </div>
+                <Grid item xs md align="center">
+                    <Chip
+                        color={evidence[e].isSelected ? "primary" : "default"}
+                        key={e}
+                        disabled={evidence[e].isDisabled}
+                        onClick={() => toggleEvidence(e)}
+                        label={evidence[e].name}>
+                    </Chip>
+                </Grid>
+            )}
+            <Grid item xs={12} md align="center">
+                <IconButton edge="start" onClick={props.reset}>
+                    <HighlightOffIcon />
+                </IconButton>
+            </Grid>
+        </Grid>
     }
 
     return (
-        <div>
-            <h2>Click the Evidence Names Below to Begin (This color is my bootleg darkmode)</h2>
-            {renderEvidence()}
-            <button onClick={props.reset}>Clear</button>
-        </div>
+        <Grid container lg={6}>
+                {renderEvidence()}
+        </Grid>
     )
 }
 

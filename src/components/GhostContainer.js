@@ -1,32 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Box, Card, Typography, Link, IconButton, Paper } from '@material-ui/core';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { makeStyles } from '@material-ui/core/styles'
 
 const GhostContainer = (props) => {
+
     let renderContents = () => {
         return props.ghosts.length > 0
             ?
-            <div className="listContainer">
+            <Box>
                 {props.ghosts.map(ghost =>
-                    <div
+                    <Card raised
                         key={ghost.name}>
-                        <div>
-                            <a href={ghost.link}>{ghost.name}</a>
-                        </div>
+                        <Typography variant="h4">
+                            {ghost.name}
+                            <IconButton href={ghost.link} target="_blank">
+                                <ExitToAppIcon />
+                            </IconButton>
+                        </Typography>
                         <ul>
                             <li><b>Strength: </b>{ghost.strength}</li>
                             <li><b>Weakness: </b>{ghost.weakness}</li>
                         </ul>
-                    </div>)}
-            </div>
+                    </Card>)}
+            </Box>
             :
             <div>{props.emptyText}</div>
     }
 
     return (
-        <div>
-            <h2>{props.title}</h2>
+        <Box>
+                <Typography variant="h2" color="primary">{props.title}</Typography>
             {renderContents()}
-        </div>
+        </Box>
     )
 }
 

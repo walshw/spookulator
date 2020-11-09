@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import { evidenceDictionary, evidenceList, ghostList } from '../constants/constants'
+import { AppBar, Typography } from '@material-ui/core';
 import EvidenceOptions from './EvidenceOptions';
 import GhostContainer from './GhostContainer';
 import ListContainer from './ListContainer';
 
-class EvidenceContainer extends Component {
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = theme => ({
+    offset: theme.mixins.toolbar
+})
+
+class MainContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.state = this.getInitialState();
+        this.state = {
+            drawerOpen: false,
+            ...this.getInitialState()
+        };
     }
 
     getInitialState = () => {
@@ -114,12 +124,27 @@ class EvidenceContainer extends Component {
     }
 
     render() {
+        const { drawerOpen } = this.state;
+
+        const { classes } = this.props;
+
         return (
             <div className="evidenceContainer">
+                <AppBar
+                    position="fixed"
+                >
+                    <Typography variant="h2">
+                        Spookulator
+                        </Typography>
+                </AppBar>
+                <div className={classes.offset}/>
                 <EvidenceOptions
                     toggleEvidence={this.toggleEvidence}
                     evidence={this.state.evidence}
-                    reset={this.resetState} />
+                    reset={this.resetState}
+                    isOpen={drawerOpen}
+                    toggleOpen={() => this.setState({ drawerOpen: !drawerOpen })}
+                />
                 <hr />
                 <ListContainer
                     title="Possible Remaining Evidence (Maybe remove? Maybe have pictures of tools)"
@@ -133,24 +158,4 @@ class EvidenceContainer extends Component {
     }
 }
 
-// im thinking of having a box of all the evidences
-// they will be clickable labels that glow when selected
-
-// choices will have the unselectable evidence be grayed out
-// on selection a box listing all impossible evidence will pop up? (see if this is redundant)
-
-
-// Selection area (EvidenceOptions)
-
-// Possible remaining evidence
-// Impossible evidence
-// Possible ghosts
-// Impossible ghosts
-
-//^ Maybe all of these can be in one component (ListContainer.js?)
-// and just have render methods for each section
-
-// ^ for these sections see if you can have a hide/show button??
-// maybe animations for shrinking and growing when they get bigger
-
-export default EvidenceContainer;
+export default withStyles(styles)(MainContainer);
