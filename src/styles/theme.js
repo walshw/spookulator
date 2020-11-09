@@ -4,10 +4,11 @@ import { deepPurple, orange } from '@material-ui/core/colors';
 const theme = createMuiTheme({
     palette: {
       primary: {
-        main: orange[500]
+        main: "#E36C14",
+        contrastText: "#000000"
       },
       secondary: {
-        main: deepPurple[500]
+        main: "#1C4EAA"
       },
       text: {
           default: "#FFFF00",
@@ -15,11 +16,34 @@ const theme = createMuiTheme({
       },
       background: {
           default: "#666667"
-      }
+      },
+    },
+    spacing: 2,
+    overrides: {
+        MuiCard: {
+            root: {
+                background: "#2F2D92",
+                margin: 15,
+                padding: 15
+            }
+        }
+    }, mixins: {
+        toolbar: {
+            minHeight: 78
+        }
     }
   })
 
   export default theme;
+
+//   const useStyles = makeStyles((theme) => ({
+//     root: {
+//       ...theme.typography.button,
+//       backgroundColor: theme.palette.background.paper,
+//       padding: theme.spacing(1),
+//     },
+//   }));
+
 
   // https://www.schemecolor.com/blue-orange-and-gray.php
 

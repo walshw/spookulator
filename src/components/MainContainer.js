@@ -8,8 +8,7 @@ import ListContainer from './ListContainer';
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
-    offset: theme.mixins.toolbar,
-    test: "#ffff"
+    offset: theme.mixins.toolbar
 })
 
 class MainContainer extends Component {
@@ -134,7 +133,7 @@ class MainContainer extends Component {
                 <AppBar
                     position="fixed"
                 >
-                    <Typography variant="h4">
+                    <Typography variant="h2">
                         Spookulator
                         </Typography>
                 </AppBar>
