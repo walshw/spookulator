@@ -11,7 +11,10 @@ const ListContainer = (props) => {
                 {props.contentList.map(content =>
                     <div
                         key={content.name}>
-                        <li>{content.name}</li>
+                        <li>
+                            <div>{content.name}</div>
+                            <div><img src={content.image} height="250" width="250"/></div>
+                        </li>
                     </div>)}
                 </ul>
             </div>
