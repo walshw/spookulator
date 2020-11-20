@@ -2,39 +2,40 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import { deepPurple, orange } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
-    palette: {
-      primary: {
-        main: "#E36C14",
-        contrastText: "#000000"
-      },
-      secondary: {
-        main: "#1C4EAA"
-      },
-      text: {
-          default: "#FFFF00",
-          primary: "#FFFFFF"
-      },
-      background: {
-          default: "#666667"
-      },
-    },
-    spacing: 2,
-    overrides: {
-        MuiCard: {
-            root: {
-                background: "#2F2D92",
-                margin: 15,
-                padding: 15
-            }
-        }
-    }, mixins: {
-        toolbar: {
-            minHeight: 78
-        }
-    }
-  })
+	palette: {
+		primary: {
+			main: "#E36C14",
+			contrastText: "#000000"
+		},
+		secondary: {
+			main: "#1C4EAA"
+		},
+		text: {
+			default: "#FFFF00",
+			primary: "#FFFFFF"
+		},
+		background: {
+			default: "#666667"
+		},
+	},
+	spacing: 2,
+	overrides: {
+		MuiCard: {
+			root: {
+				background: "#2F2D92",
+				margin: 15,
+				padding: 15
+			}
+		}
+	},
+	mixins: {
+		toolbar: {
+			minHeight: 78
+		}
+	},
+})
 
-  export default theme;
+export default theme;
 
 //   const useStyles = makeStyles((theme) => ({
 //     root: {

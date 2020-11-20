@@ -147,7 +147,7 @@ class MainContainer extends Component {
                 />
                 <hr />
                 <ListContainer
-                    title="Possible Remaining Evidence (Maybe remove? Maybe have pictures of tools)"
+                    title="Possible Remaining Evidence"
                     contentList={this.state.possibleRemainingEvidence}
                     emptyText="No remaining evidence"
                 />
