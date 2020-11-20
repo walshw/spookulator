@@ -1,5 +1,4 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { deepPurple, orange } from '@material-ui/core/colors';
 
 // Theme I think would be nice
 //https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=673AB7&primary.text.color=ffffff&secondary.color=5a6abf

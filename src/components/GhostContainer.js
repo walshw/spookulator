@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Card, Typography, Link, IconButton, Paper } from '@material-ui/core';
+import { Box, Card, Typography, IconButton, Grid } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const GhostContainer = (props) => {
@@ -8,7 +8,7 @@ const GhostContainer = (props) => {
     let renderContents = () => {
         return props.ghosts.length > 0
             ?
-            <Box>
+            <Grid item>
                 {props.ghosts.map(ghost =>
                     <Card raised
                         key={ghost.name}>
@@ -23,15 +23,17 @@ const GhostContainer = (props) => {
                             <li><b>Weakness: </b>{ghost.weakness}</li>
                         </ul>
                     </Card>)}
-            </Box>
+            </Grid>
             :
-            <div>{props.emptyText}</div>
+            <Grid item>{props.emptyText}</Grid>
     }
 
     return (
         <Box>
             <Typography variant="h3" color="primary">{props.title}</Typography>
-            {renderContents()}
+            <Grid container align justify="space-between">
+                {renderContents()}
+            </Grid>
         </Box>
     )
 }

@@ -24,7 +24,7 @@ const ListContainer = (props) => {
                         ?
                         props.contentList.map(content =>
                             <div key={content.name}>
-                                <div><img src={content.image} height="100" width="100" /></div>
+                                <div><img src={content.image} alt="image" height="100" width="100" /></div>
                                 <Typography>{content.name}</Typography>
                             </div>)
                         :
