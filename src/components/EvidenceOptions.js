@@ -22,7 +22,7 @@ const EvidenceOptions = (props) => {
             )}
             <Grid item xs={12} md align="center">
                 <IconButton edge="start" onClick={props.reset}>
-                    <HighlightOffIcon />
+                    <HighlightOffIcon color="primary" />
                 </IconButton>
             </Grid>
         </Grid>

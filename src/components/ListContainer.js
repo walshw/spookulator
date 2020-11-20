@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
-
 const useStyles = makeStyles({
     listContainer: {
         display: "flex",
         justifyContent: "space-around",
     }
 })
-
 
 const ListContainer = (props) => {
     const classes = useStyles();
