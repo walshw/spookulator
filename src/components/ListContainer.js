@@ -7,7 +7,7 @@ import { Typography } from '@material-ui/core';
 const useStyles = makeStyles({
     listContainer: {
         display: "flex",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
     }
 })
 

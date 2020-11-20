@@ -1,28 +1,46 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { deepPurple, orange } from '@material-ui/core/colors';
 
+// Theme I think would be nice
+//https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=673AB7&primary.text.color=ffffff&secondary.color=5a6abf
+
+// This is the object for the above link
+// secondary: {
+// 	main: "#5a6abf",
+// 	light: "#8d98f2",
+// 	dark: "#23408e"
+// },
+
+// Theme I am currently using
+//https://material.io/resources/color/#!/?view.left=1&view.right=0&primary.color=673AB7&secondary.color=424242&primary.text.color=ffffff
+
+
 const theme = createMuiTheme({
 	palette: {
 		primary: {
-			main: "#E36C14",
+			main: "#673ab7",
+			light: "#9a67ea",
+			dark: "#320b86",
 			contrastText: "#000000"
 		},
 		secondary: {
-			main: "#1C4EAA"
+			main: "#424242",
+			light: "#6d6d6d",
+			dark: "#1b1b1b"
 		},
 		text: {
-			default: "#FFFF00",
-			primary: "#FFFFFF"
+			default: "#FFFFFF",
+			primary: "#FFFFFF",
 		},
 		background: {
-			default: "#666667"
+			default: "#1b1b1b",
 		},
 	},
 	spacing: 2,
 	overrides: {
 		MuiCard: {
 			root: {
-				background: "#2F2D92",
+				background: "#320b86",
 				margin: 15,
 				padding: 15
 			}
