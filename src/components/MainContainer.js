@@ -97,6 +97,8 @@ class MainContainer extends Component {
 
         disableEvidence(currentEvidence, impossibleRemainingEvidenceNames);
 
+        possibleRemainingEvidenceNames.sort();
+
         const possibleRemainingEvidence =
             possibleRemainingEvidenceNames.map(evidenceName => ({
                 name: evidenceName,
