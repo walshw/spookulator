@@ -4,12 +4,15 @@ import { disableEvidence, getEvidenceByName } from '../utils/evidenceUtils';
 import { AppBar, Typography } from '@material-ui/core';
 import EvidenceOptions from './EvidenceOptions';
 import GhostContainer from './GhostContainer';
-import ListContainer from './ListContainer';
+import RemainingEvidenceContainer from './RemainingEvidenceContainer';
 
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
-    offset: theme.mixins.toolbar
+    offset: theme.mixins.toolbar,
+    mainContainer: {
+        margin: "20px"
+    }
 })
 
 class MainContainer extends Component {
@@ -17,7 +20,6 @@ class MainContainer extends Component {
         super(props);
 
         this.state = {
-            drawerOpen: false,
             ...this.getInitialState()
         };
     }
@@ -123,13 +125,22 @@ class MainContainer extends Component {
         </div>
     }
 
-    render() {
-        const { drawerOpen } = this.state;
+    renderRemainingEvidence = () => {
+        return this.state.possibleRemainingEvidence.length > 0 ? <div>
+            <RemainingEvidenceContainer
+                title="Remaining Evidence"
+                contentList={this.state.possibleRemainingEvidence}
+            />
+            <hr />
+        </div> : ""
+    }
 
+    render() {
+        const { drawerOpen, evidence } = this.state;
         const { classes } = this.props;
 
         return (
-            <div className="evidenceContainer">
+            <div className={classes.mainContainer}>
                 <AppBar
                     position="absolute"
                 >
@@ -139,19 +150,13 @@ class MainContainer extends Component {
                 </AppBar>
                 <div className={classes.offset} />
                 <EvidenceOptions
+                    title="Select Found Evidence"
                     toggleEvidence={this.toggleEvidence}
-                    evidence={this.state.evidence}
+                    evidence={evidence}
                     reset={this.resetState}
-                    isOpen={drawerOpen}
-                    toggleOpen={() => this.setState({ drawerOpen: !drawerOpen })}
                 />
                 <hr />
-                <ListContainer
-                    title="Possible Remaining Evidence"
-                    contentList={this.state.possibleRemainingEvidence}
-                    emptyText="No remaining evidence"
-                />
-                <hr />
+                {this.renderRemainingEvidence()}
                 {this.renderRemainingGhosts()}
             </div>
         )
