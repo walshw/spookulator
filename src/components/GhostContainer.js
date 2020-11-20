@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Card, Typography, Link, IconButton, Paper } from '@material-ui/core';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { makeStyles } from '@material-ui/core/styles'
 
 const GhostContainer = (props) => {
 
@@ -31,7 +30,7 @@ const GhostContainer = (props) => {
 
     return (
         <Box>
-                <Typography variant="h2" color="primary">{props.title}</Typography>
+            <Typography variant="h3" color="primary">{props.title}</Typography>
             {renderContents()}
         </Box>
     )

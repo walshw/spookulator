@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { evidenceDictionary, evidenceList, ghostList } from '../constants/constants'
+import { evidenceDictionary, ghostList } from '../constants/constants';
+import { disableEvidence, getEvidenceByName } from '../utils/evidenceUtils';
 import { AppBar, Typography } from '@material-ui/core';
 import EvidenceOptions from './EvidenceOptions';
 import GhostContainer from './GhostContainer';
@@ -27,12 +28,13 @@ class MainContainer extends Component {
 
         Object.keys(evidenceDictionary).forEach(e => {
             evidenceObject[e] = {
-                name: evidenceDictionary[e],
+                name: evidenceDictionary[e].name,
+                image: evidenceDictionary[e].image,
                 isSelected: false,
                 isDisabled: false
             };
 
-            possibleEvidence.push({ name: evidenceDictionary[e] });
+            possibleEvidence.push({ name: evidenceDictionary[e].name, image: evidenceDictionary[e].image });
         });
 
         return {
@@ -68,43 +70,41 @@ class MainContainer extends Component {
     }
 
     calculateEvidenceStates = (currentEvidence) => {
+        const possibleGhosts = [];
+        const impossibleGhosts = [];
+        const allPossibleEvidence = new Set();
+
         const selectedEvidenceNames = Object.keys(currentEvidence)
             .filter((eKey) => currentEvidence[eKey].isSelected)
             .map(eKey => currentEvidence[eKey].name);
 
-        const possibleGhosts = [];
-        const impossibleGhosts = [];
-
-        const allPossibleEvidence = new Set();
-
         ghostList.forEach(ghost => {
-            if (selectedEvidenceNames
-                .every(evidence => ghost.evidence
-                    .includes(evidence))) {
+            if (selectedEvidenceNames.every(evidence => ghost.evidence.includes(evidence))) {
                 possibleGhosts.push(ghost);
-
                 ghost.evidence.forEach(e => allPossibleEvidence.add(e))
-
             } else {
                 impossibleGhosts.push(ghost);
             }
         });
 
         const possibleRemainingEvidenceNames = Array.from(allPossibleEvidence).filter(e => !selectedEvidenceNames.includes(e));
-        const impossibleRemainingEvidenceNames = Object.values(evidenceDictionary).filter(e => !possibleRemainingEvidenceNames.includes(e) && !selectedEvidenceNames.includes(e));
+        const impossibleRemainingEvidenceNames =
+            Object.values(evidenceDictionary)
+                .filter(e => !possibleRemainingEvidenceNames.includes(e.name) && !selectedEvidenceNames.includes(e.name))
+                .map(e => e.name);
 
-        Object.keys(currentEvidence).forEach(eKey => {
-            if (impossibleRemainingEvidenceNames.includes(currentEvidence[eKey].name)) {
-                currentEvidence[eKey].isDisabled = true;
-            } else {
-                currentEvidence[eKey].isDisabled = false;
-            }
-        })
+        disableEvidence(currentEvidence, impossibleRemainingEvidenceNames);
+
+        const possibleRemainingEvidence =
+            possibleRemainingEvidenceNames.map(evidenceName => ({
+                name: evidenceName,
+                image: getEvidenceByName(evidenceDictionary, evidenceName).image
+            }))
 
         this.setState({
             possibleGhosts: possibleGhosts,
             impossibleGhosts: impossibleGhosts,
-            possibleRemainingEvidence: possibleRemainingEvidenceNames.map(e => ({ name: e })),
+            possibleRemainingEvidence: possibleRemainingEvidence,
             selectedEvidence: currentEvidence
         });
     }
@@ -137,7 +137,7 @@ class MainContainer extends Component {
                         Spookulator
                         </Typography>
                 </AppBar>
-                <div className={classes.offset}/>
+                <div className={classes.offset} />
                 <EvidenceOptions
                     toggleEvidence={this.toggleEvidence}
                     evidence={this.state.evidence}
@@ -147,7 +147,7 @@ class MainContainer extends Component {
                 />
                 <hr />
                 <ListContainer
-                    title="Possible Remaining Evidence (Maybe remove? Maybe have pictures of tools)"
+                    title="Possible Remaining Evidence"
                     contentList={this.state.possibleRemainingEvidence}
                     emptyText="No remaining evidence"
                 />

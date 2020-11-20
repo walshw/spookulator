@@ -1,10 +1,30 @@
+const dirUrl = process.env.PUBLIC_URL + "/evidenceImages/";
+
 const evidenceDictionary = {
-    emfLevelFive: 'EMF Level 5',
-    ghostWriting: 'Ghost Writing',
-    fingerPrints: 'Fingerprints',
-    spiritBox: 'Spirit Box',
-    freezingTemperatures: 'Freezing Temperatures',
-    ghostOrb: 'Ghost Orb'
+    emfLevelFive: {
+        name: 'EMF Level 5',
+        image: dirUrl + 'emfLevel5.jpg'
+    },
+    ghostWriting: {
+        name: 'Ghost Writing',
+        image: dirUrl + 'ghostWriting.png'
+    },
+    fingerPrints: {
+        name: 'Fingerprints',
+        image: dirUrl + 'fingerprints.jpg'
+    },
+    spiritBox: {
+        name: 'Spirit Box',
+        image: dirUrl + 'spiritBox.png'
+    },
+    freezingTemperatures: {
+        name: 'Freezing Temperatures',
+        image: dirUrl + 'freezingTemperatures.jpg'
+    },
+    ghostOrb: {
+        name: 'Ghost Orb',
+        image: dirUrl + 'ghostOrb.png'
+    }
 };
 
 const ghostList = [
