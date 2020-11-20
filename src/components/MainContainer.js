@@ -131,7 +131,7 @@ class MainContainer extends Component {
         return (
             <div className="evidenceContainer">
                 <AppBar
-                    position="fixed"
+                    position="absolute"
                 >
                     <Typography variant="h2">
                         Spookulator
