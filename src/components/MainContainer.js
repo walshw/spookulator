@@ -158,7 +158,6 @@ class MainContainer extends Component {
                     reset={this.resetState}
                 />
                 <hr />
-                {this.renderRemainingEvidence()}
                 {this.renderRemainingGhosts()}
             </div>
         )
