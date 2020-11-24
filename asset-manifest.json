@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/spookulator/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/spookulator/static/js/main.bfe8e7c0.chunk.js",
-    "main.js.map": "/spookulator/static/js/main.bfe8e7c0.chunk.js.map",
+    "main.js": "/spookulator/static/js/main.ea485798.chunk.js",
+    "main.js.map": "/spookulator/static/js/main.ea485798.chunk.js.map",
     "runtime-main.js": "/spookulator/static/js/runtime-main.6a795a29.js",
     "runtime-main.js.map": "/spookulator/static/js/runtime-main.6a795a29.js.map",
-    "static/js/2.3e69105f.chunk.js": "/spookulator/static/js/2.3e69105f.chunk.js",
-    "static/js/2.3e69105f.chunk.js.map": "/spookulator/static/js/2.3e69105f.chunk.js.map",
+    "static/js/2.316d079b.chunk.js": "/spookulator/static/js/2.316d079b.chunk.js",
+    "static/js/2.316d079b.chunk.js.map": "/spookulator/static/js/2.316d079b.chunk.js.map",
     "static/js/3.7196d734.chunk.js": "/spookulator/static/js/3.7196d734.chunk.js",
     "static/js/3.7196d734.chunk.js.map": "/spookulator/static/js/3.7196d734.chunk.js.map",
     "index.html": "/spookulator/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/spookulator/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.3e69105f.chunk.js.LICENSE.txt": "/spookulator/static/js/2.3e69105f.chunk.js.LICENSE.txt"
+    "static/js/2.316d079b.chunk.js.LICENSE.txt": "/spookulator/static/js/2.316d079b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.6a795a29.js",
-    "static/js/2.3e69105f.chunk.js",
+    "static/js/2.316d079b.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.bfe8e7c0.chunk.js"
+    "static/js/main.ea485798.chunk.js"
   ]
 }
