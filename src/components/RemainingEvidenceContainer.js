@@ -7,6 +7,8 @@ const useStyles = makeStyles({
     remainingEvidenceContainer: {
         display: "flex",
         justifyContent: "space-around",
+        flexWrap: "wrap",
+        margin: "15px"
     },
     evidenceContainer: {
         textAlign: "center",

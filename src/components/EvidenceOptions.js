@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Chip, IconButton, Grid, Avatar, Box, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const EvidenceOptions = (props) => {
@@ -31,9 +32,11 @@ const EvidenceOptions = (props) => {
     return (
         <Box>
             <Typography variant="h3" color="primary">{props.title}</Typography>
-            <Grid container lg={6}>
-                {renderEvidence()}
-            </Grid>
+            <Box margin={7.5}>
+                <Grid container lg={6}>
+                    {renderEvidence()}
+                </Grid>
+            </Box>
         </Box>
     )
 }
