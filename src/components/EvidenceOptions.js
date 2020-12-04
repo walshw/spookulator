@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Chip, IconButton, Grid, Avatar, Box, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const EvidenceOptions = (props) => {

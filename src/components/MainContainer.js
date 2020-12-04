@@ -5,13 +5,21 @@ import { AppBar, Typography } from '@material-ui/core';
 import EvidenceOptions from './EvidenceOptions';
 import GhostContainer from './GhostContainer';
 import RemainingEvidenceContainer from './RemainingEvidenceContainer';
-
+import SocialMediaLinks from './SocialMediaLinks';
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
     offset: theme.mixins.toolbar,
     mainContainer: {
         margin: "20px"
+    },
+    headerText: {
+        flexGrow: 1,
+    },
+    linkIconsContainer: {
+        display: "flex",
+        justifyContent: "space-around",
+        flexBasis: "10%"
     }
 })
 
@@ -143,12 +151,10 @@ class MainContainer extends Component {
 
         return (
             <div className={classes.mainContainer}>
-                <AppBar
-                    position="absolute"
-                >
-                    <Typography variant="h2">
+                <AppBar position="absolute">
+                    <Typography variant="h2" className={classes.headerText}>
                         Spookulator
-                        </Typography>
+                    </Typography>
                 </AppBar>
                 <div className={classes.offset} />
                 <EvidenceOptions
@@ -159,6 +165,7 @@ class MainContainer extends Component {
                 />
                 <hr />
                 {this.renderRemainingGhosts()}
+                <SocialMediaLinks />
             </div>
         )
     }
