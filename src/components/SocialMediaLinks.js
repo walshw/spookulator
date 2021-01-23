@@ -1,10 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { IconButton, Grid, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
 
 const useStyles = makeStyles(theme => ({
     icon: {
@@ -25,7 +23,7 @@ const SocialMediaLinks = (props) => {
                     <IconButton href="https://www.linkedin.com/in/williamdwalsh/" target="_blank">
                         <LinkedInIcon className={classes.icon} fontSize="large" />
                     </IconButton>
-                    <IconButton href="https://github.com/walshw">
+                    <IconButton href="https://github.com/walshw"target="_blank">
                         <GitHubIcon className={classes.icon} fontSize="large" />
                     </IconButton>
                 </Grid>

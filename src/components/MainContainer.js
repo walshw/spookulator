@@ -4,7 +4,7 @@ import { disableEvidence, getEvidenceByName } from '../utils/evidenceUtils';
 import { AppBar, Typography } from '@material-ui/core';
 import EvidenceOptions from './EvidenceOptions';
 import GhostContainer from './GhostContainer';
-import RemainingEvidenceContainer from './RemainingEvidenceContainer';
+import About from './About';
 import SocialMediaLinks from './SocialMediaLinks';
 import { withStyles } from '@material-ui/core/styles'
 
@@ -128,25 +128,14 @@ class MainContainer extends Component {
 
         return <div>
             <GhostContainer
-                title={title}
                 ghosts={possibleGhosts}
             />
             <hr />
         </div>
     }
 
-    renderRemainingEvidence = () => {
-        return this.state.possibleRemainingEvidence.length > 0 ? <div>
-            <RemainingEvidenceContainer
-                title="Remaining Evidence"
-                contentList={this.state.possibleRemainingEvidence}
-            />
-            <hr />
-        </div> : ""
-    }
-
     render() {
-        const { drawerOpen, evidence } = this.state;
+        const { evidence } = this.state;
         const { classes } = this.props;
 
         return (
@@ -163,8 +152,8 @@ class MainContainer extends Component {
                     evidence={evidence}
                     reset={this.resetState}
                 />
-                <hr />
                 {this.renderRemainingGhosts()}
+                {/* <About /> */}
                 <SocialMediaLinks />
             </div>
         )
