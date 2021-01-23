@@ -4,12 +4,23 @@ import { disableEvidence, getEvidenceByName } from '../utils/evidenceUtils';
 import { AppBar, Typography } from '@material-ui/core';
 import EvidenceOptions from './EvidenceOptions';
 import GhostContainer from './GhostContainer';
-import ListContainer from './ListContainer';
-
+import About from './About';
+import SocialMediaLinks from './SocialMediaLinks';
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
-    offset: theme.mixins.toolbar
+    offset: theme.mixins.toolbar,
+    mainContainer: {
+        margin: "20px"
+    },
+    headerText: {
+        flexGrow: 1,
+    },
+    linkIconsContainer: {
+        display: "flex",
+        justifyContent: "space-around",
+        flexBasis: "10%"
+    }
 })
 
 class MainContainer extends Component {
@@ -17,7 +28,6 @@ class MainContainer extends Component {
         super(props);
 
         this.state = {
-            drawerOpen: false,
             ...this.getInitialState()
         };
     }
@@ -95,6 +105,8 @@ class MainContainer extends Component {
 
         disableEvidence(currentEvidence, impossibleRemainingEvidenceNames);
 
+        possibleRemainingEvidenceNames.sort();
+
         const possibleRemainingEvidence =
             possibleRemainingEvidenceNames.map(evidenceName => ({
                 name: evidenceName,
@@ -116,7 +128,6 @@ class MainContainer extends Component {
 
         return <div>
             <GhostContainer
-                title={title}
                 ghosts={possibleGhosts}
             />
             <hr />
@@ -124,35 +135,26 @@ class MainContainer extends Component {
     }
 
     render() {
-        const { drawerOpen } = this.state;
-
+        const { evidence } = this.state;
         const { classes } = this.props;
 
         return (
-            <div className="evidenceContainer">
-                <AppBar
-                    position="absolute"
-                >
-                    <Typography variant="h2">
+            <div className={classes.mainContainer}>
+                <AppBar position="absolute">
+                    <Typography variant="h2" className={classes.headerText}>
                         Spookulator
-                        </Typography>
+                    </Typography>
                 </AppBar>
                 <div className={classes.offset} />
                 <EvidenceOptions
+                    title="Select Found Evidence"
                     toggleEvidence={this.toggleEvidence}
-                    evidence={this.state.evidence}
+                    evidence={evidence}
                     reset={this.resetState}
-                    isOpen={drawerOpen}
-                    toggleOpen={() => this.setState({ drawerOpen: !drawerOpen })}
                 />
-                <hr />
-                <ListContainer
-                    title="Possible Remaining Evidence"
-                    contentList={this.state.possibleRemainingEvidence}
-                    emptyText="No remaining evidence"
-                />
-                <hr />
                 {this.renderRemainingGhosts()}
+                {/* <About /> */}
+                <SocialMediaLinks />
             </div>
         )
     }
