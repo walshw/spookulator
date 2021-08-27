@@ -40,20 +40,26 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
             }
         });
 
+
         const requests = ghosts.map(ghost => axios.get('https://phasmophobia.fandom.com/wiki/' + ghost.name))
 
         axios.all(requests).then(axios.spread((...responses) => {
             responses.forEach((response, index) => {
                 const c = cheerio.load(response.data);
                 const siteText = c('.mw-parser-output').text();
-
-                ghosts[index]['strength'] = new RegExp('.*Strengths: (.*\n){1}').exec(siteText)[1].trim();
-                ghosts[index]['weakness'] = new RegExp('.*Weaknesses: (.*\n){1}').exec(siteText)[1].trim();
+                try {
+                    ghosts[index]['strength'] = new RegExp('.*Strengths: (.*\n){1}').exec(siteText)[1].trim();
+                    ghosts[index]['weakness'] = new RegExp('.*Weaknesses: (.*\n){1}').exec(siteText)[1].trim();
+                } catch (error) {
+                    ghosts[index]['strength'] = "Will update once wiki is updated";
+                    ghosts[index]['weakness'] = "Will update once wiki is updated";
+                }
+                
+                
             });
 
+            // REMEMBER THIS IS WHERE THE FOREACH ENDS, NOT IN A FINALLY() OUTSIDE OF THIS SCOPE
             console.log(ghosts);
+            console.log(evidence);
         }));
-
-        // console.log(ghosts);
-        // console.log(evidence)
     });

@@ -7,7 +7,7 @@ const EvidenceOptions = (props) => {
     const renderEvidence = () => {
         const { toggleEvidence, evidence } = props;
 
-        return <Grid container spacing={2} display="flex" alignItems="center">
+        return <Grid container spacing={1} display="flex" alignItems="center">
             {Object.keys(evidence).map(e =>
                 <Grid item xs md align="center">
                     <Chip
