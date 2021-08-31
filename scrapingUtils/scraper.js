@@ -4,29 +4,27 @@ const cheerio = require('cheerio')
 axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
     .then((response) => {
         const $ = cheerio.load(response.data);
-        const tableRows = $('table.wikitable > tbody > tr');
-
-        const evidence = [];
+        // Since either I am using Cheerio wrong, or something is wrong with it, using the query selector to get the body ALSO gets the table header for some reason
+        // This makes a slice after the table header with all the table rows
+        const tableRows = $('#mw-content-text > div > table.article-table.sortable.wikitable > tbody > tr').slice(1);
+        const evidence = new Set();
         const ghosts = [];
-
+        
         tableRows.each((elementIndex, element) => {
-            if (elementIndex === 0) {
-                $(element).children().each((evidenceIndex, evidenceTd) => {
-                    if (evidenceIndex > 0) {
-                        evidence.push($(evidenceTd).text().trim());
-                    }
-                });
-            } else {
                 let ghostName = '';
                 let ghostEvidence = [];
 
+                // the first TD is ghost name
+                // the following will have either a piece of evidence OR no text
+                // All we have to do is just grab all the evidence, add it to our evidence set, and add it to the ghost's evidence
+
                 $(element).children().each((index, category) => {
                     text = $(category).text().trim();
-
                     if (index === 0) {
                         ghostName = text;
-                    } else if (text === 'X') {
-                        ghostEvidence.push(evidence[index - 1])
+                    } else if (text.trim() !== '') {
+                        evidence.add(text);
+                        ghostEvidence.push(text);
                     }
                 });
 
@@ -37,7 +35,6 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
                     strength: "",
                     weakness: ""
                 });
-            }
         });
 
 
@@ -60,6 +57,6 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
 
             // REMEMBER THIS IS WHERE THE FOREACH ENDS, NOT IN A FINALLY() OUTSIDE OF THIS SCOPE
             console.log(ghosts);
-            console.log(evidence);
+            console.log(Array.from(evidence));
         }));
     });
