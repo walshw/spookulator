@@ -31,6 +31,7 @@ axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
                 ghosts.push({
                     name: ghostName,
                     evidence: ghostEvidence,
+                    remainingEvidence: ghostEvidence,
                     link: ("https://phasmophobia.fandom.com/wiki/" + ghostName),
                     strength: "",
                     weakness: ""

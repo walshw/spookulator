@@ -21,6 +21,9 @@ const GhostContainer = (props) => {
                         <ul>
                             <li><b>Strength: </b>{ghost.strength}</li>
                             <li><b>Weakness: </b>{ghost.weakness}</li>
+                            <ul>
+                                {ghost.remainingEvidence.map(evidence => <li>{evidence}</li>)}
+                            </ul>
                         </ul>
                     </Card>)}
             </Grid>
