@@ -90,7 +90,9 @@ class MainContainer extends Component {
 
         ghostList.forEach(ghost => {
             if (selectedEvidenceNames.every(evidence => ghost.evidence.includes(evidence))) {
-                possibleGhosts.push(ghost);
+                let tempGhost = ghost;
+                tempGhost['remainingEvidence'] = ghost.evidence.filter(x => !selectedEvidenceNames.includes(x));
+                possibleGhosts.push(tempGhost);
                 ghost.evidence.forEach(e => allPossibleEvidence.add(e))
             } else {
                 impossibleGhosts.push(ghost);
