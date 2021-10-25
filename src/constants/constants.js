@@ -159,6 +159,38 @@ const ghostList = [
         link: 'https://phasmophobia.fandom.com/wiki/Yurei',
         strength: "Yurei have been known to have a stronger effect on people's Sanity during a manifestation.",
         weakness: 'Using Smudge Sticks on the Yurei will cause it to not wander around the location for ~90 seconds.'
+    },
+    {
+        name: 'Obake',
+        evidence: ['EMF Level 5', 'Fingerprints', 'Ghost Orb'],
+        remainingEvidence: ['EMF Level 5', 'Fingerprints', 'Ghost Orb'],
+        link: 'https://phasmophobia.fandom.com/wiki/Obake',
+        strength: 'When interacting with the environment, an Obake will rarely leave a trace.',
+        weakness: 'Sometimes this ghost will shapeshift, leaving behind unique evidence.'
+    },
+    {
+        name: 'Onryo',
+        evidence: ['Spirit Box', 'Freezing Temperatures', 'Ghost Orb'],
+        remainingEvidence: ['Spirit Box', 'Freezing Temperatures', 'Ghost Orb'],
+        link: 'https://phasmophobia.fandom.com/wiki/Onryo',
+        strength: 'Extinguishing a flame can cause an Onryo to attack.',
+        weakness: 'When threatened, this ghost will be less likely to attack.'
+    },
+    {
+        name: 'Raiju',
+        evidence: ['EMF Level 5', 'D.O.T.S Projector', 'Ghost Orb'],
+        remainingEvidence: ['EMF Level 5', 'D.O.T.S Projector', 'Ghost Orb'],
+        link: 'https://phasmophobia.fandom.com/wiki/Onryo',
+        strength: 'Can siphon power from nearby electrical devices, making it move faster.',
+        weakness: 'Is constantly disrupting electronic equipment, making it easier to track when attacking.'
+    },
+    {
+        name: 'The Twins',
+        evidence: ['EMF Level 5', 'Spirit Box', 'Freezing Temperatures'],
+        remainingEvidence: ['EMF Level 5', 'Spirit Box', 'Freezing Temperatures'],
+        link: 'https://phasmophobia.fandom.com/wiki/Onryo',
+        strength: 'Either Twin can be angered and initiate an attack on their prey.',
+        weakness: 'The Twins will often interact with the environment at the same time.'
     }
 ];
 
