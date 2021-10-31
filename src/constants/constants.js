@@ -34,163 +34,163 @@ const evidenceDictionary = {
 const ghostList = [
     {
         name: 'Banshee',
-        evidence: ['D.O.T.S Projector', 'Ghost Orb', 'Fingerprints'],
-        remainingEvidence: ['D.O.T.S Projector', 'Ghost Orb', 'Fingerprints'],
-        link: 'https://phasmophobia.fandom.com/wiki/Banshee',
-        strength: 'A Banshee will focus on one player at a time until it kills them or the player leaves the game.',
-        weakness: 'Banshees fear the Crucifix, which boosts the Hunt-stopping range of one from 3 meters to 5 meters against it.'
+        evidence: ['Ghost Orb', 'Fingerprints', 'D.O.T.S Projector'],
+        remainingEvidence: ['Ghost Orb', 'Fingerprints', 'D.O.T.S Projector'],
+        strength: 'Will target only one player at a time.',
+        weakness: 'Crucifix effectiveness is increased to 5m against one.',
+        link: 'https://phasmophobia.fandom.com/wiki/Banshee'
     },
     {
         name: 'Demon',
-        evidence: ['Ghost Writing', 'Fingerprints', 'Freezing Temperatures'],
-        remainingEvidence: ['Ghost Writing', 'Fingerprints', 'Freezing Temperatures'],
-        link: 'https://phasmophobia.fandom.com/wiki/Demon',
-        strength: 'Demons are the most aggressive ghosts and will begin Hunts more often.',
-        weakness: "Asking a Demon successful questions on the Ouija Board won't lower the user's sanity."
+        evidence: ['Freezing Temperatures', 'Fingerprints', 'Ghost Writing'],
+        remainingEvidence: ['Freezing Temperatures', 'Fingerprints', 'Ghost Writing'],
+        strength: 'Can initiate Hunts more often.',
+        weakness: 'Getting Ouija Board responses will lower sanity less.',
+        link: 'https://phasmophobia.fandom.com/wiki/Demon'
     },
     {
         name: 'Goryo',
-        evidence: ['D.O.T.S Projector', 'EMF Level 5', 'Fingerprints'],
-        remainingEvidence: ['D.O.T.S Projector', 'EMF Level 5', 'Fingerprints'],
-        link: 'https://phasmophobia.fandom.com/wiki/Goryo',
-        strength: 'Goryo will usually only show itself on camera when there are no people nearby.',
-        weakness: 'Goryo are rarely seen far from their place of death.'
+        evidence: ['EMF Level 5', 'Fingerprints', 'D.O.T.S Projector'],
+        remainingEvidence: ['EMF Level 5', 'Fingerprints', 'D.O.T.S Projector'],
+        strength: 'Can only be seen interacting with D.O.T.S. through a camera when nobody is nearby.',
+        weakness: 'Never wanders far from its place of death.',
+        link: 'https://phasmophobia.fandom.com/wiki/Goryo'
     },
     {
         name: 'Hantu',
-        evidence: ['Ghost Orb', 'Fingerprints', 'Freezing Temperatures'],
-        remainingEvidence: ['Ghost Orb', 'Fingerprints', 'Freezing Temperatures'],
-        link: 'https://phasmophobia.fandom.com/wiki/Hantu',
-        strength: 'Hantu moves faster in colder areas (about 1.8 m/s)[verify]',
-        weakness: 'Hantu moves slower in warmer areas (about 1 m/s)[verify]'
+        evidence: ['Ghost Orb', 'Freezing Temperatures', 'Fingerprints'],
+        remainingEvidence: ['Ghost Orb', 'Freezing Temperatures', 'Fingerprints'],
+        strength: 'Lower temperatures allow the Hantu to move faster.',
+        weakness: "Warmer areas slow the Hantu's movement.",
+        link: 'https://phasmophobia.fandom.com/wiki/Hantu'
     },
     {
         name: 'Jinn',
-        evidence: ['EMF Level 5', 'Fingerprints', 'Freezing Temperatures'],
-        remainingEvidence: ['EMF Level 5', 'Fingerprints', 'Freezing Temperatures'],
-        link: 'https://phasmophobia.fandom.com/wiki/Jinn',
-        strength: 'A Jinn will travel at a faster speed if its victim is far away.',
-        weakness: "Turning off the location's power source will prevent the Jinn from using its ability."
+        evidence: ['EMF Level 5', 'Freezing Temperatures', 'Fingerprints'],
+        remainingEvidence: ['EMF Level 5', 'Freezing Temperatures', 'Fingerprints'],
+        strength: 'Travels at faster speeds if its victim is far away.',
+        weakness: "Cannot use its ability if the site's fuse box is off.",
+        link: 'https://phasmophobia.fandom.com/wiki/Jinn'
     },
     {
         name: 'Mare',
-        evidence: ['Ghost Writing', 'Ghost Orb', 'Spirit Box'],
-        remainingEvidence: ['Ghost Writing', 'Ghost Orb', 'Spirit Box'],
-        link: 'https://phasmophobia.fandom.com/wiki/Mare',
-        strength: 'When in the dark, the Mare can hunt from 60% average sanity',
-        weakness: 'Turning the lights on will decrease the range where it can hunt to 40% average sanity'
+        evidence: ['Ghost Orb', 'Spirit Box', 'Fingerprints'],
+        remainingEvidence: ['Ghost Orb', 'Spirit Box', 'Fingerprints'],
+        strength: 'Has an increased chance to attack in the dark.',
+        weakness: 'Turning the lights on will reduce the chance of an attack.',
+        link: 'https://phasmophobia.fandom.com/wiki/Mare'
     },
     {
         name: 'Myling',
-        evidence: ['Ghost Writing', 'EMF Level 5', 'Fingerprints'],
-        remainingEvidence: ['Ghost Writing', 'EMF Level 5', 'Fingerprints'],
-        link: 'https://phasmophobia.fandom.com/wiki/Myling',
-        strength: 'A Myling is known to be quieter when hunting.',
-        weakness: 'Mylings more frequently make paranormal sounds.'
-    },
-    {
-        name: 'Oni',
-        evidence: ['D.O.T.S Projector', 'EMF Level 5', 'Freezing Temperatures'],
-        remainingEvidence: ['D.O.T.S Projector', 'EMF Level 5', 'Freezing Temperatures'],
-        link: 'https://phasmophobia.fandom.com/wiki/Oni',
-        strength: 'Oni are more active when people are nearby and have been seen moving objects at great speed.',
-        weakness: 'Being more active will make the Oni easier to find and identify.'
-    },
-    {
-        name: 'Phantom',
-        evidence: ['D.O.T.S Projector', 'Fingerprints', 'Spirit Box'],
-        remainingEvidence: ['D.O.T.S Projector', 'Fingerprints', 'Spirit Box'],
-        link: 'https://phasmophobia.fandom.com/wiki/Phantom',
-        strength: 'Looking at a Phantom will considerably drop your sanity.',
-        weakness: 'Taking a photo of the Phantom will make it temporarily disappear.'
-    },
-    {
-        name: 'Poltergeist',
-        evidence: ['Ghost Writing', 'Fingerprints', 'Spirit Box'],
-        remainingEvidence: ['Ghost Writing', 'Fingerprints', 'Spirit Box'],
-        link: 'https://phasmophobia.fandom.com/wiki/Poltergeist',
-        strength: 'A Poltergeist is capable of influencing more objects at once than any other Ghosts, and is capable of shutting multiple doors at once.',
-        weakness: 'A Poltergeist is almost ineffective in an empty room.'
-    },
-    {
-        name: 'Revenant',
-        evidence: ['Ghost Writing', 'Ghost Orb', 'Freezing Temperatures'],
-        remainingEvidence: ['Ghost Writing', 'Ghost Orb', 'Freezing Temperatures'],
-        link: 'https://phasmophobia.fandom.com/wiki/Revenant',
-        strength: 'A Revenant will travel at a significantly faster (2x) speed when hunting a victim. Additionally, the Revenant can freely switch whoever it is targeting during a Hunt.',
-        weakness: 'Hiding from the Revenant will cause it to move at a significantly reduced (0.5x) speed.'
-    },
-    {
-        name: 'Shade',
-        evidence: ['Ghost Writing', 'EMF Level 5', 'Freezing Temperatures'],
-        remainingEvidence: ['Ghost Writing', 'EMF Level 5', 'Freezing Temperatures'],
-        link: 'https://phasmophobia.fandom.com/wiki/Shade',
-        strength: 'As a shy ghost, a Shade will rarely perform actions in the presence of two or more people, making it harder to detect.',
-        weakness: 'Conversely, a Shade will rarely start a Hunt when players are grouped together.'
-    },
-    {
-        name: 'Spirit',
-        evidence: ['Ghost Writing', 'EMF Level 5', 'Spirit Box'],
-        remainingEvidence: ['Ghost Writing', 'EMF Level 5', 'Spirit Box'],
-        link: 'https://phasmophobia.fandom.com/wiki/Spirit',
-        strength: 'Nothing.',
-        weakness: 'Using Smudge Sticks on a Spirit will prevent it from starting a hunt for a long period of time (180 seconds instead of 90).'
-    },
-    {
-        name: 'Wraith',
-        evidence: ['D.O.T.S Projector', 'EMF Level 5', 'Spirit Box'],
-        remainingEvidence: ['D.O.T.S Projector', 'EMF Level 5', 'Spirit Box'],
-        link: 'https://phasmophobia.fandom.com/wiki/Wraith',
-        strength: "Wraiths almost never touch the ground meaning it can't be tracked by footsteps.",
-        weakness: 'Wraiths have a toxic reaction to Salt.'
-    },
-    {
-        name: 'Yokai',
-        evidence: ['D.O.T.S Projector', 'Ghost Orb', 'Spirit Box'],
-        remainingEvidence: ['D.O.T.S Projector', 'Ghost Orb', 'Spirit Box'],
-        link: 'https://phasmophobia.fandom.com/wiki/Yokai',
-        strength: 'Talking near a Yokai will anger it and increase its chance of attacking.',
-        weakness: 'While hunting, a Yokai can only hear voices close to it.'
-    },
-    {
-        name: 'Yurei',
-        evidence: ['D.O.T.S Projector', 'Ghost Orb', 'Freezing Temperatures'],
-        remainingEvidence: ['D.O.T.S Projector', 'Ghost Orb', 'Freezing Temperatures'],
-        link: 'https://phasmophobia.fandom.com/wiki/Yurei',
-        strength: "Yurei have been known to have a stronger effect on people's Sanity during a manifestation.",
-        weakness: 'Using Smudge Sticks on the Yurei will cause it to not wander around the location for ~90 seconds.'
+        evidence: ['EMF Level 5', 'Fingerprints', 'Ghost Writing'],
+        remainingEvidence: ['EMF Level 5', 'Fingerprints', 'Ghost Writing'],
+        strength: 'Has quieter footsteps during a hunt.',
+        weakness: 'Produces paranormal sounds more frequently.',
+        link: 'https://phasmophobia.fandom.com/wiki/Myling'
     },
     {
         name: 'Obake',
-        evidence: ['EMF Level 5', 'Fingerprints', 'Ghost Orb'],
-        remainingEvidence: ['EMF Level 5', 'Fingerprints', 'Ghost Orb'],
-        link: 'https://phasmophobia.fandom.com/wiki/Obake',
-        strength: 'When interacting with the environment, an Obake will rarely leave a trace.',
-        weakness: 'Sometimes this ghost will shapeshift, leaving behind unique evidence.'
+        evidence: ['EMF Level 5', 'Ghost Orb', 'Fingerprints'],
+        remainingEvidence: ['EMF Level 5', 'Ghost Orb', 'Fingerprints'],
+        strength: 'Rarely leaves a trace when interacting with the environment.',
+        weakness: 'Sometimes leaves behind unique evidence.',
+        link: 'https://phasmophobia.fandom.com/wiki/Obake'
+    },
+    {
+        name: 'Oni',
+        evidence: ['EMF Level 5', 'Freezing Temperatures', 'D.O.T.S Projector'],
+        remainingEvidence: ['EMF Level 5', 'Freezing Temperatures', 'D.O.T.S Projector'],
+        strength: 'Increased activity if there are multiple players nearby.',
+        weakness: "An Oni's increased activity makes them easier to find.",
+        link: 'https://phasmophobia.fandom.com/wiki/Oni'
     },
     {
         name: 'Onryo',
-        evidence: ['Spirit Box', 'Freezing Temperatures', 'Ghost Orb'],
-        remainingEvidence: ['Spirit Box', 'Freezing Temperatures', 'Ghost Orb'],
-        link: 'https://phasmophobia.fandom.com/wiki/Onryo',
+        evidence: ['Ghost Orb', 'Spirit Box', 'Freezing Temperatures'],
+        remainingEvidence: ['Ghost Orb', 'Spirit Box', 'Freezing Temperatures'],
         strength: 'Extinguishing a flame can cause an Onryo to attack.',
-        weakness: 'When threatened, this ghost will be less likely to attack.'
+        weakness: 'When threatened, this ghost will be less likely to hunt.',
+        link: 'https://phasmophobia.fandom.com/wiki/Onryo'
+    },
+    {
+        name: 'Phantom',
+        evidence: ['Spirit Box', 'Fingerprints', 'D.O.T.S Projector'],
+        remainingEvidence: ['Spirit Box', 'Fingerprints', 'D.O.T.S Projector'],
+        strength: "Looking at a Phantom will lower the player's Sanity considerably.",
+        weakness: 'Taking a photo of the Phantom will cause it to briefly disappear.',
+        link: 'https://phasmophobia.fandom.com/wiki/Phantom'
+    },
+    {
+        name: 'Poltergeist',
+        evidence: ['Spirit Box', 'Fingerprints', 'Ghost Writing'],
+        remainingEvidence: ['Spirit Box', 'Fingerprints', 'Ghost Writing'],
+        strength: 'Capable of throwing multiple objects at once.',
+        weakness: 'Becomes powerless with no throwables nearby.',
+        link: 'https://phasmophobia.fandom.com/wiki/Poltergeist'
     },
     {
         name: 'Raiju',
-        evidence: ['EMF Level 5', 'D.O.T.S Projector', 'Ghost Orb'],
-        remainingEvidence: ['EMF Level 5', 'D.O.T.S Projector', 'Ghost Orb'],
-        link: 'https://phasmophobia.fandom.com/wiki/Onryo',
-        strength: 'Can siphon power from nearby electrical devices, making it move faster.',
-        weakness: 'Is constantly disrupting electronic equipment, making it easier to track when attacking.'
+        evidence: ['EMF Level 5', 'Ghost Orb', 'D.O.T.S Projector'],
+        remainingEvidence: ['EMF Level 5', 'Ghost Orb', 'D.O.T.S Projector'],
+        strength: 'Moves faster near electrical devices.',
+        weakness: 'Constantly disrupt electronic equipment.',
+        link: 'https://phasmophobia.fandom.com/wiki/Raiju'
+    },
+    {
+        name: 'Revenant',
+        evidence: ['Ghost Orb', 'Freezing Temperatures', 'Ghost Writing'],
+        remainingEvidence: ['Ghost Orb', 'Freezing Temperatures', 'Ghost Writing'],
+        strength: 'Can travel significantly faster if a player is spotted during a Hunt.',
+        weakness: 'Without a target, the Revenant moves very slowly.',
+        link: 'https://phasmophobia.fandom.com/wiki/Revenant'
+    },
+    {
+        name: 'Shade',
+        evidence: ['EMF Level 5', 'Freezing Temperatures', 'Ghost Writing'],
+        remainingEvidence: ['EMF Level 5', 'Freezing Temperatures', 'Ghost Writing'],
+        strength: 'Being shy makes it more difficult to locate and obtain evidence.',
+        weakness: 'Less likely to hunt if multiple people are nearby.',
+        link: 'https://phasmophobia.fandom.com/wiki/Shade'
+    },
+    {
+        name: 'Spirit',
+        evidence: ['EMF Level 5', 'Spirit Box', 'Ghost Writing'],
+        remainingEvidence: ['EMF Level 5', 'Spirit Box', 'Ghost Writing'],
+        strength: 'None.',
+        weakness: 'Smudge Sticks are more effective, preventing a hunt for longer.',
+        link: 'https://phasmophobia.fandom.com/wiki/Spirit'
     },
     {
         name: 'The Twins',
         evidence: ['EMF Level 5', 'Spirit Box', 'Freezing Temperatures'],
         remainingEvidence: ['EMF Level 5', 'Spirit Box', 'Freezing Temperatures'],
-        link: 'https://phasmophobia.fandom.com/wiki/Onryo',
         strength: 'Either Twin can be angered and initiate an attack on their prey.',
-        weakness: 'The Twins will often interact with the environment at the same time.'
+        weakness: 'The Twins will often interact with the environment at the same time.',
+        link: 'https://phasmophobia.fandom.com/wiki/The_Twins'
+    },
+    {
+        name: 'Wraith',
+        evidence: ['EMF Level 5', 'Spirit Box', 'D.O.T.S Projector'],
+        remainingEvidence: ['EMF Level 5', 'Spirit Box', 'D.O.T.S Projector'],
+        strength: 'Does not leave UV Footprints after stepping in salt.',
+        weakness: 'Will become more active if it steps in salt.',
+        link: 'https://phasmophobia.fandom.com/wiki/Wraith'
+    },
+    {
+        name: 'Yokai',
+        evidence: ['Ghost Orb', 'Spirit Box', 'D.O.T.S Projector'],
+        remainingEvidence: ['Ghost Orb', 'Spirit Box', 'D.O.T.S Projector'],
+        strength: 'Talking near the Yokai will anger it, increasing the chance to attack.',
+        weakness: 'Can only hear voices close to it during a Hunt.',
+        link: 'https://phasmophobia.fandom.com/wiki/Yokai'
+    },
+    {
+        name: 'Yurei',
+        evidence: ['Ghost Orb', 'Freezing Temperatures', 'D.O.T.S Projector'],
+        remainingEvidence: ['Ghost Orb', 'Freezing Temperatures', 'D.O.T.S Projector'],
+        strength: 'Has a stronger effect on Sanity.',
+        weakness: "Smudging the Yurei's Ghost Room will reduce how often it wanders.",
+        link: 'https://phasmophobia.fandom.com/wiki/Yurei'
     }
 ];
 

@@ -1,63 +1,57 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
 
-axios.get("https://phasmophobia.fandom.com/wiki/Evidence")
+// TODO: Probably have this scaper read the ghost's page instead of the ghosts page, this way we can have the ability to get a ghost summary too
+
+axios.get("https://phasmophobia.fandom.com/wiki/Ghosts")
     .then((response) => {
         const $ = cheerio.load(response.data);
-        // Since either I am using Cheerio wrong, or something is wrong with it, using the query selector to get the body ALSO gets the table header for some reason
-        // This makes a slice after the table header with all the table rows
-        const tableRows = $('#mw-content-text > div > table.article-table.sortable.wikitable > tbody > tr').slice(1);
-        const evidence = new Set();
+
         const ghosts = [];
-        
-        tableRows.each((elementIndex, element) => {
-                let ghostName = '';
-                let ghostEvidence = [];
+        const evidenceSet = new Set();
 
-                // the first TD is ghost name
-                // the following will have either a piece of evidence OR no text
-                // All we have to do is just grab all the evidence, add it to our evidence set, and add it to the ghost's evidence
-
-                $(element).children().each((index, category) => {
-                    text = $(category).text().trim();
-                    if (index === 0) {
-                        ghostName = text;
-                    } else if (text.trim() !== '') {
-                        evidence.add(text);
-                        ghostEvidence.push(text);
-                    }
-                });
+        $("#mw-content-text > div > table.fandom-table > tbody > tr").slice(1).each((index, tableRows) => {
+            $(tableRows).each((idx, tableRow) => {
+                const ghostDetails = $(tableRow).children().toArray();
 
                 ghosts.push({
-                    name: ghostName,
-                    evidence: ghostEvidence,
-                    remainingEvidence: ghostEvidence,
-                    link: ("https://phasmophobia.fandom.com/wiki/" + ghostName),
-                    strength: "",
-                    weakness: ""
+                    name: $(ghostDetails[0]).text().trim(),
+                    evidence: [],
+                    remainingEvidence: [],
+                    strength: $(ghostDetails[1]).text().trim(),
+                    weakness: $(ghostDetails[2]).text().trim(),
+                    link: "https://phasmophobia.fandom.com" + $(ghostDetails[0]).find("a").attr('href')
                 });
+            })
         });
 
+        $("#mw-content-text > div > table.sortable.wikitable > tbody > tr").slice(1).each((index, tableRows) => {
+            $(tableRows).each((idx, tableRow) => {
+                const ghostDetails = $(tableRow).children().toArray().slice(1);
 
-        const requests = ghosts.map(ghost => axios.get('https://phasmophobia.fandom.com/wiki/' + ghost.name))
+                ghostDetails.forEach(cell => {
+                    let evidence = "";
 
-        axios.all(requests).then(axios.spread((...responses) => {
-            responses.forEach((response, index) => {
-                const c = cheerio.load(response.data);
-                const siteText = c('.mw-parser-output').text();
-                try {
-                    ghosts[index]['strength'] = new RegExp('.*Strengths: (.*\n){1}').exec(siteText)[1].trim();
-                    ghosts[index]['weakness'] = new RegExp('.*Weaknesses: (.*\n){1}').exec(siteText)[1].trim();
-                } catch (error) {
-                    ghosts[index]['strength'] = "Will update once wiki is updated";
-                    ghosts[index]['weakness'] = "Will update once wiki is updated";
-                }
-                
-                
+                    if ($(cell).find("a").attr('title') !== undefined) {
+                        evidence = $(cell).find("a").attr('title').trim();
+                    } else if ($(cell).text().trim() !== "") {
+                        evidence = $(cell).text().trim();
+                    }
+
+                    if (evidence !== '') {
+                        if (evidence.includes("(Evidence)")) {
+                            evidence = evidence.replace("(Evidence)", '')
+                        }
+                        evidence = evidence.trim();
+                        evidenceSet.add(evidence);
+                        ghosts[index].evidence.push(evidence);
+                        ghosts[index].remainingEvidence.push(evidence);
+                    }
+                });
             });
+        });
 
-            // REMEMBER THIS IS WHERE THE FOREACH ENDS, NOT IN A FINALLY() OUTSIDE OF THIS SCOPE
-            console.log(ghosts);
-            console.log(Array.from(evidence));
-        }));
-    });
+        console.log(ghosts);
+        console.log(evidenceSet);
+    })
+    .catch(err => console.log(err));

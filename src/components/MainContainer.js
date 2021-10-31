@@ -14,8 +14,10 @@ const styles = theme => ({
         margin: "20px"
     },
     headerText: {
+        padding: 5,
         flexGrow: 1,
-    },
+        fontWeight: "bold"
+},
     linkIconsContainer: {
         display: "flex",
         justifyContent: "space-around",
