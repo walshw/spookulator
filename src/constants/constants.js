@@ -74,8 +74,8 @@ const ghostList = [
     },
     {
         name: 'Mare',
-        evidence: ['Ghost Orb', 'Spirit Box', 'Fingerprints'],
-        remainingEvidence: ['Ghost Orb', 'Spirit Box', 'Fingerprints'],
+        evidence: ['Ghost Orb', 'Spirit Box', 'Ghost Writing'],
+        remainingEvidence: ['Ghost Orb', 'Spirit Box', 'Ghost Writing'],
         strength: 'Has an increased chance to attack in the dark.',
         weakness: 'Turning the lights on will reduce the chance of an attack.',
         link: 'https://phasmophobia.fandom.com/wiki/Mare'

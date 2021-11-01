@@ -43,6 +43,13 @@ axios.get("https://phasmophobia.fandom.com/wiki/Ghosts")
                             evidence = evidence.replace("(Evidence)", '')
                         }
                         evidence = evidence.trim();
+
+
+                        // TODO: THE WIKI HAS A PIC OF GHOST WRITING BUT IT LINKS TO FINGERPRINTS HAHAH I LOVE WIKI ADMINS
+                        if (ghosts[index].name === "Mare" && evidence === "Fingerprints") {
+                            evidence = "Ghost Writing";
+                        }
+
                         evidenceSet.add(evidence);
                         ghosts[index].evidence.push(evidence);
                         ghosts[index].remainingEvidence.push(evidence);
